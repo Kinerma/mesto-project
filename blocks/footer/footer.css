@@ -1,0 +1,17 @@
+.footer {
+  max-width: 880px;
+  width: 100%;
+  margin: 67px auto 60px;
+}
+@media screen and (max-width: 1279px) {
+  .footer {
+    margin-top: calc(48px + ((100vw - 320px) * (67 - 48) / (1279 - 320)));
+    margin-bottom: calc(36px + ((100vw - 320px) * (60 - 36) / (1279 - 320)));
+    width: calc(100vw - 38px);
+  }
+}
+@media screen and (max-width: 320px) {
+  .footer__copyright {
+    max-width: 282px;
+  }
+}
