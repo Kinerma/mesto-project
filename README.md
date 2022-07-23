@@ -10,7 +10,8 @@
 * Flex и Grid Layout;
 * Адаптивная верстка;
 * Метод файловой структуры БЭМ;
-* Figma.
+* Figma;
+* JavaScript.
 
 ## Сcылки
 

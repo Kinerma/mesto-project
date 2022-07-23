@@ -9,7 +9,7 @@
   padding: 34px 36px 37px;
   color: #000000;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   .popup__form {
     max-width: 282px;
     min-height: 322px;
