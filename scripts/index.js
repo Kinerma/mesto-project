@@ -77,8 +77,8 @@ cleansingList.forEach(cleansingList => {
 
 //Редактирование профиля
 function openPopupEditProfile() {
-  fieldName.placeholder = profileTitle.textContent;
-  fieldAbout.placeholder = profileSubtitle.textContent;
+  fieldName.value = profileTitle.textContent;
+  fieldAbout.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
 }
 
@@ -87,8 +87,6 @@ function closePopupEditProfile(event) {
   profileTitle.textContent = fieldName.value;
   profileSubtitle.textContent = fieldAbout.value;
   closePopup(popupEditProfile);
-  fieldName.value = '';
-  fieldAbout.value = '';
 }
 popupForm.addEventListener('submit', closePopupEditProfile);
 
