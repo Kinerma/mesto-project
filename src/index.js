@@ -1,3 +1,5 @@
+import './pages/index.css';
+
 //Попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupNewElemet = document.querySelector('.popup_type_new-elemet');
