@@ -9,7 +9,7 @@ export const settings = ({
 
 //Показать ошибки
 function showInputError(formElement, inputElement, errorMessage, settings) {
-  const errorElement = formElement.querySelector(`.$(inputElement.id)-error`);
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.ErrorClass);
@@ -17,7 +17,7 @@ function showInputError(formElement, inputElement, errorMessage, settings) {
 
 //Скрыть ошибки
 function hideInputError(formElement, inputElement, settings) {
-  const errorElement = formElement.querySelector(`.$(inputElement.id)-error`);
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(settings.inputErrorClass);
   errorElement.classList.remove(settings.ErrorClass);
   errorElement.textContent = '';
