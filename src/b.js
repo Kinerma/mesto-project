@@ -1,3 +1,5 @@
+import './pages/index.css';
+
 //Попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupNewElemet = document.querySelector('.popup_type_new-elemet');
@@ -62,6 +64,7 @@ const initialCards = [
 //Открытие попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keyHandler);
 }
 profileEditButton.addEventListener('click', () => openPopupEditProfile());
 profileAddButton.addEventListener('click', () => openPopup(popupNewElemet));
@@ -69,6 +72,7 @@ profileAddButton.addEventListener('click', () => openPopup(popupNewElemet));
 //Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  
 }
 cleansingList.forEach(cleansingList => {
   const popup = cleansingList.closest('.popup');
@@ -139,4 +143,12 @@ function openPopupFullScreen(title, image) {
   popupImage.alt = title;
   popupCaption.textContent = title;
   openPopup(popupFullScreen);
+}
+
+//
+function keyHandler(evt) {
+  if(evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
