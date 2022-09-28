@@ -42,3 +42,5 @@
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
+@import url(../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css);
+@import url(../blocks/popup/__error/_type/_active/popup__error_type_active.css);

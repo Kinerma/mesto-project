@@ -1,4 +1,10 @@
 import './pages/index.css';
+import './components/cards'
+import './components/modal'
+import { hideAllErrors, settings, enableValidation } from'./components/validate.js';
+
+enableValidation(settings);
+
 
 //Попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');

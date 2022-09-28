@@ -52,33 +52,34 @@
 
      <div class="popup popup_type_edit-profile">
       <div class="popup__form">
-        <form class="popup__edit-form popup__new-edit-form" action="submit" name="Profile" id="Profile">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <fieldset class="popup__fieldset">
-            <input class="popup__field popup__type_field_name" 
-              type="text" 
-              name="UserName" 
-              required 
-              placeholder="Жак-Ив Кусто"
-              id="UserName" 
-              minlength="2" 
-              maxlength="40"
-              pattern="^[a-zA-Zа-яА-Я-\s]+$"
-              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
-            <input class="popup__field popup__type_field_about" 
-              type="text" 
-              name="UserAbout" 
-              required 
-              placeholder="Исследователь океана"
-              id="UserAbout" 
-              minlength="2" 
-              maxlength="200"
-              pattern="^[a-zA-Zа-яА-Я-\s]+$"
-              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
-            <span class="popup__error userabout-error"></span>
-          </fieldset>
-          <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
-        </form>
+        <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__edit-form popup__new-edit-form" action="#" name="Profile" id="Profile" novalidate>
+            <fieldset class="popup__fieldset">
+              <input class="popup__field popup__type_field_name" 
+                type="text" 
+                name="UserName" 
+                required 
+                placeholder="Жак-Ив Кусто"
+                id="UserName" 
+                minlength="2" 
+                maxlength="40"
+                pattern="^[a-zA-Zа-яА-Я-\s]+$"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
+              <span class="popup__error username-error">Вы пропустили это поле</span>
+              <input class="popup__field popup__type_field_about" 
+                type="text" 
+                name="UserAbout" 
+                required 
+                placeholder="Исследователь океана"
+                id="UserAbout" 
+                minlength="2" 
+                maxlength="200"
+                pattern="^[a-zA-Zа-яА-Я-\s]+$"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
+              <span class="popup__error userabout-error">Вы пропустили это поле</span>
+              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+            </fieldset>
+          </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
       </div>
     </div>
@@ -87,8 +88,8 @@
 
     <div class="popup popup_type_new-elemet">
       <div class="popup__form">
-        <form class="popup__edit-form popup__new-cards" action="submit" name="NewCards" id="NewCards">
-          <h2 class="popup__title">Новое место</h2>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__edit-form popup__new-cards" action="submit" name="NewCards" id="NewCards" novalidate>
           <fieldset class="popup__fieldset">
             <input class="popup__field popup__type_field_title" 
               type="text" 
@@ -101,16 +102,16 @@
               maxlength="30"
               pattern="^[a-zA-Zа-яА-Я-\s]+$"
               data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
-            <span class="popup__error cardtitle-error"></span>
+            <span class="popup__error cardtitle-error">Вы пропустили это поле</span>
             <input class="popup__field popup__type_field_url" 
               type="text" 
               value="" 
               name="CardURL" 
               required 
               placeholder="Ссылка на картинку">
-            <span class="popup__error cardurl-error"></span>
+            <span class="popup__error cardurl-error">Введите адрес сайта</span>
+            <button class="popup__submit-button" type="submit" aria-label="Создать">Создать</button>
           </fieldset>
-          <button class="popup__submit-button" type="submit" aria-label="Создать">Создать</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
       </div>
