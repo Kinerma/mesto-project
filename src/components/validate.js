@@ -47,7 +47,7 @@ function isValid(inputList) {
 }
 
 //Переключение кнопок на Disabled
-function controlButtonState(submitButton, inputList, settings) {
+export function controlButtonState(submitButton, inputList, settings) {
   if (isValid(inputList)) {
     submitButton.classList.add(settings.inactiveButtonClass);
     submitButton.setAttribute('disabled', '');

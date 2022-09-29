@@ -62,9 +62,8 @@
                 placeholder="Жак-Ив Кусто"
                 id="UserName" 
                 minlength="2" 
-                maxlength="40"
-                pattern="^[a-zA-Zа-яА-Я-\s]+$"
-                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
+                value="Жак-Ив Кусто"
+                maxlength="40">
               <span class="popup__error username-error">Вы пропустили это поле</span>
               <input class="popup__field popup__type_field_about" 
                 type="text" 
@@ -72,10 +71,9 @@
                 required 
                 placeholder="Исследователь океана"
                 id="UserAbout" 
+                value="Исследователь океана"
                 minlength="2" 
-                maxlength="200"
-                pattern="^[a-zA-Zа-яА-Я-\s]+$"
-                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
+                maxlength="200">
               <span class="popup__error userabout-error">Вы пропустили это поле</span>
               <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
             </fieldset>
@@ -93,19 +91,15 @@
           <fieldset class="popup__fieldset">
             <input class="popup__field popup__type_field_title" 
               type="text" 
-              value="" 
               name="CardTitle"
               required 
               placeholder="Название"
               id="CardTitle" 
               minlength="2" 
-              maxlength="30"
-              pattern="^[a-zA-Zа-яА-Я-\s]+$"
-              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
+              maxlength="30">
             <span class="popup__error cardtitle-error">Вы пропустили это поле</span>
             <input class="popup__field popup__type_field_url" 
               type="text" 
-              value="" 
               name="CardURL" 
               required 
               placeholder="Ссылка на картинку">

@@ -1,6 +1,6 @@
 import './pages/index.css';
-import './components/cards'
-import './components/modal'
+import './components/cards.js'
+import './components/modal.js'
 import { hideAllErrors, settings, enableValidation } from'./components/validate.js';
 
 enableValidation(settings);
