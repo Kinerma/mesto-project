@@ -87,7 +87,7 @@ function closePopup(popup) {
 
 //Закрытие попапов на овелей
 popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
+  popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
           closePopup(popup)
       }
