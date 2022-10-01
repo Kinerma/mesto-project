@@ -1,4 +1,5 @@
 .popup__field {
+  margin-bottom: 5px;
   padding: 0 0 8px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -6,4 +7,17 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+} 
+
+.form__field:invalid {
+  border-bottom: 1px solid rgb(255, 0, 0);
+}
+
+.form__field:focus {
+  outline-color: 1px solid rgba(0, 0, 0, 0.2);
+}
+.form__field::placeholder {
+  font-size: 14px;
+  line-height: 1.21;
+  padding-bottom: 13px;
 }

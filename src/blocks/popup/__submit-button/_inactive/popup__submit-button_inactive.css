@@ -1,0 +1,9 @@
+.popup__submit-button_inactive {
+  color: rgb(255, 255, 255);
+  background: rgb(229, 229, 229);
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
