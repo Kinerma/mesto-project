@@ -1,17 +1,8 @@
-
-
 import {openPopupFullScreen} from "./modal";
-import {closePopup} from "./utils";
+import {elementsTemplate} from './constant';
 
-const elementsSection = document.querySelector('.elements');
-const elementsTemplate = document.querySelector('#templates').content;
-
-const fieldTitle = document.querySelector('.popup__type_field_title');
-const fieldUrl = document.querySelector('.popup__type_field_url');
-const newCards = document.querySelector('.popup__new-cards');
-export const popupNewElemet = document.querySelector('.popup_type_new-elemet');
 //Базовые карточки
-const initialCards = [
+export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -38,18 +29,10 @@ const initialCards = [
   }
 ];
 
-//Добавление новых карточек
-function addNewCards(event) {
-  event.preventDefault();
-  elementsSection.prepend(addingCards(fieldTitle.value, fieldUrl.value));
-  newCards.reset();
-  closePopup(popupNewElemet);
-}
-
 //Отобржение карточек
-function addingCards(title, image) {
+export function addingCards(title, image) {
   
-  const template = elementsTemplate.cloneNode(true);
+  const template = elementsTemplate.content.cloneNode(true);
   const cardImage = template.querySelector('.element__image');
   cardImage.src = image;
   cardImage.alt = title;
@@ -61,14 +44,6 @@ function addingCards(title, image) {
   return template;
 }
 
-//Добавление дефолтных карточек
-function addCardsDefolt(templates) {
-  templates.forEach(function (element) {
-    const card = addingCards(element.name, element.link);
-    elementsSection.append(card);
-  });
-}
-
 //Удаление карточки
 function deleteCard(event) {
   event.target.closest('.element').remove();
@@ -78,5 +53,3 @@ function deleteCard(event) {
 function puteLike (event) {
   event.target.classList.toggle('element__like_active');
 }
-addCardsDefolt(initialCards);
-newCards.addEventListener('submit', addNewCards);
