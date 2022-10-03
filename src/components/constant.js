@@ -4,6 +4,8 @@ export const profileAddButton = document.querySelector('.profile__add-button');
 export const popups = document.querySelectorAll('.popup');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const profileEditButton = document.querySelector('.profile__edit-button');
+export const popupAvatar = document.querySelector('.popup__avatar');
+export const popupAvatarOpen = document.querySelector('.profile__avatars');
 
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');

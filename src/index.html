@@ -20,7 +20,10 @@
      <main class="content">
       
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватар">
+        <div class="profile__avatars">
+          <div class="profile__overlay" alt="Оверлей"></div>
+          <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватар">
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
@@ -38,6 +41,7 @@
               <h2 class="element__title"></h2>
               <button class="element__like" type="button"></button>
             </div>
+            <p class="element__like-counter"></p>
           </div>
         </template>
       </section>
@@ -47,7 +51,27 @@
      <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
      </footer>
-    
+
+     <!--Попап редактирования аватара-->
+
+     <div class="popup popup__avatar">
+       <div class="popup__form">
+         <form class="popup__edit-form popup__new-avatar" name="avatar" method="post" novalidate>
+           <h2 class="popup__title">Обновить аватар</h2>
+             <input class="popup__field popup__type_field_avatar"
+                         type="url"
+                         name="avatar"
+                         id="avatar-input"
+                         required
+                         placeholder="Ссылка на картинку"
+                         data-error-message="Введите ссылку на картинку">
+             <span class="popup__field-error avatar-input-error"></span>
+             <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+         </form>
+         <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+       </div>
+     </div>
+
     <!--Попап на редактирование профиля-->
 
      <div class="popup popup_type_edit-profile">

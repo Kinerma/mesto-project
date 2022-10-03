@@ -17,6 +17,8 @@ import {
     fieldUrl,
     newCards,
     popupNewElemet,
+    popupAvatar,
+    popupAvatarOpen
 } from './components/constant'
 
 //Редактирование профиля
@@ -50,15 +52,20 @@ function addCardsDefolt(templates) {
     });
 }
 
-
 profileEditButton.addEventListener('click', function () {
     openPopupEditProfile();
 });
 
 popupForm.addEventListener('submit', closePopupEditProfile);
+//Открытие карточки
 profileAddButton.addEventListener('click', function () {
     modal.openPopup(popupNewElemet);
     validate.disabledButton(popupNewElemet);
+});
+//Открытие аватара
+popupAvatarOpen.addEventListener('click', function () {
+   modal.openPopup(popupAvatar);
+   validate.disabledButton(popupAvatar);
 });
 
 addCardsDefolt(cards.initialCards);

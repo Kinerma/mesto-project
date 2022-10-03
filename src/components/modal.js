@@ -1,7 +1,7 @@
 import {
   popupFullScreen,
   popupImage,
-  popupCaption
+  popupCaption,
 } from './constant';
 
 //Открытие попапов
