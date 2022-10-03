@@ -58,7 +58,7 @@ profileEditButton.addEventListener('click', function () {
 popupForm.addEventListener('submit', closePopupEditProfile);
 profileAddButton.addEventListener('click', function () {
     modal.openPopup(popupNewElemet);
-    validate.disabledButton();
+    validate.disabledButton(popupNewElemet);
 });
 
 addCardsDefolt(cards.initialCards);
