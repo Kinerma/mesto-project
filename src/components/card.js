@@ -32,10 +32,10 @@ export const initialCards = [
 //Отобржение карточек
 export function addingCards(title, image) {
   
-  const template = elementsTemplate.content.cloneNode(true);
+  const template = elementsTemplate.querySelector('.element').cloneNode(true);
   const cardImage = template.querySelector('.element__image');
-  cardImage.src = image;
-  cardImage.alt = title;
+  cardImage.setAttribute("src", image);
+  cardImage.setAttribute("alt", title);
   template.querySelector('.element__title').textContent = title;
   template.querySelector('.element__trash').addEventListener('click', deleteCard);
   template.querySelector('.element__like').addEventListener('click', puteLike);

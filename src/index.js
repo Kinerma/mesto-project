@@ -16,7 +16,7 @@ import {
     fieldTitle,
     fieldUrl,
     newCards,
-    popupNewElemet
+    popupNewElemet,
 } from './components/constant'
 
 //Редактирование профиля
@@ -39,6 +39,7 @@ function addNewCards(event) {
     elementsSection.prepend(cards.addingCards(fieldTitle.value, fieldUrl.value));
     newCards.reset();
     modal.closePopup(popupNewElemet);
+    validate.disabledButton(popupNewElemet);
 }
 
 //Добавление дефолтных карточек
@@ -49,9 +50,17 @@ function addCardsDefolt(templates) {
     });
 }
 
-profileEditButton.addEventListener('click', () => openPopupEditProfile());
+
+profileEditButton.addEventListener('click', function () {
+    openPopupEditProfile();
+});
+
 popupForm.addEventListener('submit', closePopupEditProfile);
-profileAddButton.addEventListener('click', () => modal.openPopup(popupNewElemet));
+profileAddButton.addEventListener('click', function () {
+    modal.openPopup(popupNewElemet);
+    validate.disabledButton();
+});
+
 addCardsDefolt(cards.initialCards);
 newCards.addEventListener('submit', addNewCards);
 

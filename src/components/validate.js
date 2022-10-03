@@ -1,4 +1,13 @@
-import {settings} from './constant';
+export const settings = {
+  submitButtonPopup: '.popup__submit-button',
+  inactiveButton: 'popup__submit-button_inactive',
+  formSelector: '.popup__edit-form',
+  formInput: '.popup__field-error',
+  formError: 'popup__field_type_error',
+  formErrorActive: 'popup__field-error_active',
+  formField: '.popup__field',
+  formPopup: '.popup__form'
+}
 
 //Покажем элемент ошибки
 export const showInputError = (formElement, inputElement, errorMessage) => {
@@ -77,3 +86,10 @@ export const isValid = (formElement, inputElement) => {
     hideInputError(formElement, inputElement);
   }
 };
+
+//Делать кнопку неактивной после добавления новой карточки
+export function disabledButton(popup) {
+  const button = popup.querySelector(settings.submitButtonPopup);
+  button.classList.add(settings.inactiveButton);
+  button.setAttribute('disabled', 'disabled');
+}
