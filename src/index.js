@@ -18,8 +18,14 @@ import {
     newCards,
     popupNewElemet,
     popupAvatar,
-    popupAvatarOpen
+    popupAvatarOpen,
+    inputAvatar,
+    profileAvatar,
+    avatarForm
 } from './components/constant'
+
+import {createNewCards, editProfileUser, updateAvatar} from "./components/api";
+
 
 //Редактирование профиля
 function openPopupEditProfile() {
@@ -30,14 +36,43 @@ function openPopupEditProfile() {
 
 function closePopupEditProfile(event) {
     event.preventDefault();
-    profileTitle.textContent = fieldName.value;
-    profileSubtitle.textContent = fieldAbout.value;
+    event.submitter.textContent = 'Сохранение...'
+    editProfileUser(fieldName.value, fieldAbout.value)
+        .then((res) => {
+            profileTitle.textContent = res.name;
+            profileSubtitle.textContent = res.about;
+        })
+        .catch((err) => {
+            console.log('Ошибка при сохранении профиля', err)
+        })
+        .finally(() => {
+            event.submitter.textContent = 'Сохранить'
+        });
     modal.closePopup(popupEditProfile);
+}
+
+//Редактирование аватара
+function editProfileAvatar(event) {
+    event.preventDefault();
+    event.submitter.textContent = 'Сохранение...'
+    updateAvatar(inputAvatar.value)
+        .then((res) => {
+            profileAvatar.src = res.avatar;
+        })
+        .catch((err) => {
+            console.log('Ошибка при загрузке аватар', err);
+        })
+        .finally(() => {
+            event.submitter.textContent = 'Сохранить'
+            event.target.reset();
+        });
+    modal.closePopup(popupAvatar);
 }
 
 //Добавление новых карточек
 function addNewCards(event) {
     event.preventDefault();
+    event.submitter.textContent = 'Сохранение...'
     elementsSection.prepend(cards.addingCards(fieldTitle.value, fieldUrl.value));
     newCards.reset();
     modal.closePopup(popupNewElemet);
@@ -57,6 +92,8 @@ profileEditButton.addEventListener('click', function () {
 });
 
 popupForm.addEventListener('submit', closePopupEditProfile);
+avatarForm.addEventListener('submit', editProfileAvatar);
+
 //Открытие карточки
 profileAddButton.addEventListener('click', function () {
     modal.openPopup(popupNewElemet);

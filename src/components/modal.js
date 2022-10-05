@@ -2,7 +2,12 @@ import {
   popupFullScreen,
   popupImage,
   popupCaption,
+  profileTitle,
+  profileSubtitle,
+  profileAvatar,
 } from './constant';
+
+let userId = null;
 
 //Открытие попапов
 export function openPopup(popup) {
@@ -29,3 +34,9 @@ export function openPopupFullScreen(title, image) {
   openPopup(popupFullScreen);
 }
 
+//Пользовательские данные
+export const setUserInfo = ({userTitle, userSubtitle, userAvatar}) => {
+  if (userTitle) profileTitle.textContent = userTitle;
+  if (userSubtitle) profileSubtitle.textContent = userSubtitle;
+  if (userAvatar) profileAvatar.src = userAvatar;
+}

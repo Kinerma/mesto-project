@@ -8,8 +8,11 @@ const config = {
 }
 
 //Проверка ответа на ошибку
-export const getAnswer = (res) => {
-    return res.ok ? res.json() : Promise.reject(`Ошибка. Запрос не выполнен: ${res.status}`);
+export function getAnswer(res) {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`)
 }
 
 // Отображение карточки сервером
@@ -25,11 +28,14 @@ export function giveInformation() {
 }
 
 //Добавление карточек
-export function createNewCards(data) {
+export function createNewCards(name, link) {
     return fetch(`${config.baseUrl}/cards`, {
         method: 'POST',
         headers: config.headers,
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            name: name,
+            link: link
+        })
     })
         .then(getAnswer)
 }
@@ -44,12 +50,20 @@ export function deletedCards(cardId) {
 }
 
 //Лайк карточки
-export function puteLikeCards(cardId,likeCards) {
+export function puteLikeCards(cardId) {
     return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-        method: likeCards ? 'DELETE' : 'PUT',
+        method: 'PUT',
         headers: config.headers
     })
         .then(getAnswer)
+}
+
+//Удаление лайка
+export function deleteLikeCards(cardId) {
+    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+        method: 'DELETE',
+        headers: config.headers
+    })
 }
 
 //Редактирование профиля
