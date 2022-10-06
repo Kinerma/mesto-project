@@ -1,7 +1,10 @@
 import {
   popupFullScreen,
   popupImage,
-  popupCaption
+  popupCaption,
+  profileTitle,
+  profileSubtitle,
+  profileAvatar,
 } from './constant';
 
 //Открытие попапов

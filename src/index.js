@@ -12,12 +12,20 @@ import {
     fieldName,
     fieldAbout,
     popupForm,
-    elementsSection,
     fieldTitle,
     fieldUrl,
     newCards,
     popupNewElemet,
+    popupAvatar,
+    popupAvatarOpen,
+    inputAvatar,
+    profileAvatar,
+    avatarForm
 } from './components/constant'
+import * as api from './components/api';
+
+
+let userId;
 
 //Редактирование профиля
 function openPopupEditProfile() {
@@ -28,40 +36,74 @@ function openPopupEditProfile() {
 
 function closePopupEditProfile(event) {
     event.preventDefault();
-    profileTitle.textContent = fieldName.value;
-    profileSubtitle.textContent = fieldAbout.value;
+    event.submitter.textContent = 'Сохранение...'
+    api.editProfileUser(fieldName.value, fieldAbout.value)
+        .then((res) => {
+            profileTitle.textContent = res.name;
+            profileSubtitle.textContent = res.about;
+        })
+        .catch((err) => {
+            console.error('Ошибка при сохранении профиля', err)
+        })
+        .finally(() => {
+            event.submitter.textContent = 'Сохранить'
+        });
     modal.closePopup(popupEditProfile);
+}
+
+//Редактирование аватара
+function editProfileAvatar(event) {
+    event.preventDefault();
+    event.submitter.textContent = 'Сохранение...'
+    api.updateAvatar(inputAvatar.value)
+        .then((res) => {
+            profileAvatar.src = res.avatar;
+        })
+        .catch((err) => {
+            console.error('Ошибка при загрузке аватар', err);
+        })
+        .finally(() => {
+            event.submitter.textContent = 'Сохранить'
+        });
+    modal.closePopup(popupAvatar);
 }
 
 //Добавление новых карточек
 function addNewCards(event) {
     event.preventDefault();
-    elementsSection.prepend(cards.addingCards(fieldTitle.value, fieldUrl.value));
-    newCards.reset();
+    event.submitter.textContent = 'Сохранение...'
+    api.createNewCards(fieldTitle.value, fieldUrl.value)
+        .then((res) => {
+            cards.addCardsDefolt(fieldTitle.value, fieldUrl.value, res._id, [], res.owner._id, userId);
+        })
+        .catch((err) => {
+            console.error('Ошибка при добавлении карточки', err)
+        })
+        .finally(() => {
+            event.submitter.textContent = 'Создать'
+        })
     modal.closePopup(popupNewElemet);
     validate.disabledButton(popupNewElemet);
 }
-
-//Добавление дефолтных карточек
-function addCardsDefolt(templates) {
-    templates.forEach(function (element) {
-        const card = cards.addingCards(element.name, element.link);
-        elementsSection.append(card);
-    });
-}
-
 
 profileEditButton.addEventListener('click', function () {
     openPopupEditProfile();
 });
 
 popupForm.addEventListener('submit', closePopupEditProfile);
+avatarForm.addEventListener('submit', editProfileAvatar);
+
+//Открытие карточки
 profileAddButton.addEventListener('click', function () {
     modal.openPopup(popupNewElemet);
     validate.disabledButton(popupNewElemet);
 });
+//Открытие аватара
+popupAvatarOpen.addEventListener('click', function () {
+   modal.openPopup(popupAvatar);
+   validate.disabledButton(popupAvatar);
+});
 
-addCardsDefolt(cards.initialCards);
 newCards.addEventListener('submit', addNewCards);
 
 //Закрытие попапов на оверлей
@@ -78,4 +120,17 @@ popups.forEach((popup) => {
 
 validate.enableValidation();
 
+Promise.all([api.loadingProfileUser(), api.displayCards()])
+    .then((res) => {
+        profileTitle.textContent = res[0].name;
+        profileSubtitle.textContent = res[0].about;
+        profileAvatar.src = res[0].avatar;
+        userId = res[0]._id;
+        res[1].reverse().forEach((card) => {
+            cards.addCardsDefolt(card.name, card.link, card._id, card.likes, card.owner._id, userId)
+        })
+    })
+    .catch((err) => {
+        console.error('Ошибка при получении данных от сервера', err);
+    });
 
