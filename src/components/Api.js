@@ -1,5 +1,5 @@
 
-const config = {
+export const config = {
     baseUrl: "https://nomoreparties.co/v1/plus-cohort-15",
     headers: {
         "Content-type": 'application/json',
@@ -21,10 +21,6 @@ export function displayCards() {
         headers: config.headers,
     })
     .then(getAnswer);
-}
-
-export function giveInformation() {
-    return Promise.all([displayCards(), editProfileUser()])
 }
 
 //Добавление карточек
@@ -64,6 +60,7 @@ export function deleteLikeCards(cardId) {
         method: 'DELETE',
         headers: config.headers
     })
+        .then(getAnswer)
 }
 
 //Редактирование профиля

@@ -7,8 +7,6 @@ import {
   profileAvatar,
 } from './constant';
 
-let userId = null;
-
 //Открытие попапов
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -34,9 +32,3 @@ export function openPopupFullScreen(title, image) {
   openPopup(popupFullScreen);
 }
 
-//Пользовательские данные
-export const setUserInfo = ({userTitle, userSubtitle, userAvatar}) => {
-  if (userTitle) profileTitle.textContent = userTitle;
-  if (userSubtitle) profileSubtitle.textContent = userSubtitle;
-  if (userAvatar) profileAvatar.src = userAvatar;
-}
