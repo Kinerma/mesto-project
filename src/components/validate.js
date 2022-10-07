@@ -1,13 +1,4 @@
-export const settings = {
-  submitButtonPopup: '.popup__submit-button',
-  inactiveButton: 'popup__submit-button_inactive',
-  formSelector: '.popup__edit-form',
-  formInput: '.popup__field-error',
-  formError: 'popup__field_type_error',
-  formErrorActive: 'popup__field-error_active',
-  formField: '.popup__field',
-  formPopup: '.popup__form'
-}
+import {settings} from './constant'
 
 //Покажем элемент ошибки
 export const showInputError = (formElement, inputElement, errorMessage) => {
@@ -37,7 +28,7 @@ export const setEventListeners = (formElement) => {
   });
 }
 
-export const enableValidation = () => {
+export const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formPopup));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (event) {

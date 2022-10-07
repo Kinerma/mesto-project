@@ -33,3 +33,15 @@ export const popupCaption = document.querySelector('.popup__caption');
 //Export in card.js
 export const elementsTemplate = document.querySelector('#templates').content;
 
+//Export in validate.js
+export const settings = {
+    submitButtonPopup: '.popup__submit-button',
+    inactiveButton: 'popup__submit-button_inactive',
+    formSelector: '.popup__edit-form',
+    formInput: '.popup__field-error',
+    formError: 'popup__field_type_error',
+    formErrorActive: 'popup__field-error_active',
+    formField: '.popup__field',
+    formPopup: '.popup__form'
+}
+

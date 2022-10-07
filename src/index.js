@@ -20,7 +20,7 @@ import {
     popupAvatarOpen,
     inputAvatar,
     profileAvatar,
-    avatarForm
+    avatarForm, settings
 } from './components/constant'
 import * as api from './components/api';
 
@@ -41,6 +41,7 @@ function closePopupEditProfile(event) {
         .then((res) => {
             profileTitle.textContent = res.name;
             profileSubtitle.textContent = res.about;
+            modal.closePopup(popupEditProfile);
         })
         .catch((err) => {
             console.error('Ошибка при сохранении профиля', err)
@@ -48,7 +49,6 @@ function closePopupEditProfile(event) {
         .finally(() => {
             event.submitter.textContent = 'Сохранить'
         });
-    modal.closePopup(popupEditProfile);
 }
 
 //Редактирование аватара
@@ -58,6 +58,7 @@ function editProfileAvatar(event) {
     api.updateAvatar(inputAvatar.value)
         .then((res) => {
             profileAvatar.src = res.avatar;
+            modal.closePopup(popupAvatar);
         })
         .catch((err) => {
             console.error('Ошибка при загрузке аватар', err);
@@ -65,7 +66,6 @@ function editProfileAvatar(event) {
         .finally(() => {
             event.submitter.textContent = 'Сохранить'
         });
-    modal.closePopup(popupAvatar);
 }
 
 //Добавление новых карточек
@@ -75,6 +75,8 @@ function addNewCards(event) {
     api.createNewCards(fieldTitle.value, fieldUrl.value)
         .then((res) => {
             cards.addCardsDefolt(fieldTitle.value, fieldUrl.value, res._id, [], res.owner._id, userId);
+            modal.closePopup(popupNewElemet);
+            event.target.reset();
         })
         .catch((err) => {
             console.error('Ошибка при добавлении карточки', err)
@@ -82,7 +84,6 @@ function addNewCards(event) {
         .finally(() => {
             event.submitter.textContent = 'Создать'
         })
-    modal.closePopup(popupNewElemet);
     validate.disabledButton(popupNewElemet);
 }
 
@@ -118,7 +119,7 @@ popups.forEach((popup) => {
   });
 });
 
-validate.enableValidation();
+validate.enableValidation(settings);
 
 Promise.all([api.loadingProfileUser(), api.displayCards()])
     .then((res) => {
