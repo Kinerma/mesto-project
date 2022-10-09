@@ -34,7 +34,7 @@ export function addingCards(name, link, cardId, likes, ownerId, userId) {
   if (likes.some((like) => {
     return like._id === userId;
   })) {
-    likeElement.classList.add('.element__like_active');
+    likeElement.classList.add('element__like_active');
   }
 
   return template;

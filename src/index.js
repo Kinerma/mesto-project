@@ -59,6 +59,7 @@ function editProfileAvatar(event) {
         .then((res) => {
             profileAvatar.src = res.avatar;
             modal.closePopup(popupAvatar);
+            event.target.reset();
         })
         .catch((err) => {
             console.error('Ошибка при загрузке аватар', err);
@@ -84,7 +85,7 @@ function addNewCards(event) {
         .finally(() => {
             event.submitter.textContent = 'Создать'
         })
-    validate.disabledButton(popupNewElemet);
+    validate.disabledButton(popupNewElemet, settings);
 }
 
 profileEditButton.addEventListener('click', function () {
@@ -97,12 +98,12 @@ avatarForm.addEventListener('submit', editProfileAvatar);
 //Открытие карточки
 profileAddButton.addEventListener('click', function () {
     modal.openPopup(popupNewElemet);
-    validate.disabledButton(popupNewElemet);
+    validate.disabledButton(popupNewElemet, settings);
 });
 //Открытие аватара
 popupAvatarOpen.addEventListener('click', function () {
    modal.openPopup(popupAvatar);
-   validate.disabledButton(popupAvatar);
+   validate.disabledButton(popupAvatar, settings);
 });
 
 newCards.addEventListener('submit', addNewCards);
@@ -119,7 +120,7 @@ popups.forEach((popup) => {
   });
 });
 
-validate.enableValidation(settings);
+validate.enableValidation(settings, settings);
 
 Promise.all([api.loadingProfileUser(), api.displayCards()])
     .then((res) => {
